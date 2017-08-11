@@ -14,6 +14,7 @@
 		DA6625F31F3D617A0041A65C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA6625F11F3D617A0041A65C /* LaunchScreen.storyboard */; };
 		DA6625FE1F3D617A0041A65C /* WeatherStationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6625FD1F3D617A0041A65C /* WeatherStationsTests.swift */; };
 		DA6626091F3D617A0041A65C /* WeatherStationsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6626081F3D617A0041A65C /* WeatherStationsUITests.swift */; };
+		DA6626181F3D61930041A65C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA6626171F3D61930041A65C /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		DA6626041F3D617A0041A65C /* WeatherStationsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherStationsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA6626081F3D617A0041A65C /* WeatherStationsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherStationsUITests.swift; sourceTree = "<group>"; };
 		DA66260A1F3D617A0041A65C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA6626171F3D61930041A65C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA6626181F3D61930041A65C /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +84,7 @@
 				DA6625FC1F3D617A0041A65C /* WeatherStationsTests */,
 				DA6626071F3D617A0041A65C /* WeatherStationsUITests */,
 				DA6625E61F3D617A0041A65C /* Products */,
+				DA6626161F3D61930041A65C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -123,6 +127,14 @@
 				DA66260A1F3D617A0041A65C /* Info.plist */,
 			);
 			path = WeatherStationsUITests;
+			sourceTree = "<group>";
+		};
+		DA6626161F3D61930041A65C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DA6626171F3D61930041A65C /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,6 +207,11 @@
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = YA4YTE4823;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					DA6625F81F3D617A0041A65C = {
 						CreatedOnToolsVersion = 8.1;
