@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA2B20B91F4B8E2800D6E5F6 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2B20B81F4B8E2800D6E5F6 /* Map.swift */; };
 		DA6625E91F3D617A0041A65C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6625E81F3D617A0041A65C /* AppDelegate.swift */; };
 		DA6625EB1F3D617A0041A65C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6625EA1F3D617A0041A65C /* ViewController.swift */; };
 		DA6625EE1F3D617A0041A65C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA6625EC1F3D617A0041A65C /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DA2B20B81F4B8E2800D6E5F6 /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		DA6625E51F3D617A0041A65C /* WeatherStations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherStations.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA6625E81F3D617A0041A65C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA6625EA1F3D617A0041A65C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				DA6625EF1F3D617A0041A65C /* Assets.xcassets */,
 				DA6625F11F3D617A0041A65C /* LaunchScreen.storyboard */,
 				DA6625F41F3D617A0041A65C /* Info.plist */,
+				DA2B20B81F4B8E2800D6E5F6 /* Map.swift */,
 			);
 			path = WeatherStations;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA6625EB1F3D617A0041A65C /* ViewController.swift in Sources */,
+				DA2B20B91F4B8E2800D6E5F6 /* Map.swift in Sources */,
 				DA6625E91F3D617A0041A65C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -531,6 +535,7 @@
 				DA66260F1F3D617A0041A65C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DA6626101F3D617A0041A65C /* Build configuration list for PBXNativeTarget "WeatherStationsTests" */ = {
 			isa = XCConfigurationList;
@@ -539,6 +544,7 @@
 				DA6626121F3D617A0041A65C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DA6626131F3D617A0041A65C /* Build configuration list for PBXNativeTarget "WeatherStationsUITests" */ = {
 			isa = XCConfigurationList;
@@ -547,6 +553,7 @@
 				DA6626151F3D617A0041A65C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
