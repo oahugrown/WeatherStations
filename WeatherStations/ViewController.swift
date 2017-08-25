@@ -12,10 +12,12 @@ import MapKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
+    
     var map : Map!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         map = Map(mapInEditor: mapView)
     }
     
