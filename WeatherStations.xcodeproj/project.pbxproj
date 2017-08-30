@@ -10,7 +10,7 @@
 		DA2B20B91F4B8E2800D6E5F6 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2B20B81F4B8E2800D6E5F6 /* Map.swift */; };
 		DA49D1381F564B23005D5F1A /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA49D1371F564B23005D5F1A /* Pin.swift */; };
 		DA6625E91F3D617A0041A65C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6625E81F3D617A0041A65C /* AppDelegate.swift */; };
-		DA6625EB1F3D617A0041A65C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6625EA1F3D617A0041A65C /* ViewController.swift */; };
+		DA6625EB1F3D617A0041A65C /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6625EA1F3D617A0041A65C /* MapVC.swift */; };
 		DA6625EE1F3D617A0041A65C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA6625EC1F3D617A0041A65C /* Main.storyboard */; };
 		DA6625F01F3D617A0041A65C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA6625EF1F3D617A0041A65C /* Assets.xcassets */; };
 		DA6625F31F3D617A0041A65C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA6625F11F3D617A0041A65C /* LaunchScreen.storyboard */; };
@@ -18,6 +18,7 @@
 		DA6626091F3D617A0041A65C /* WeatherStationsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6626081F3D617A0041A65C /* WeatherStationsUITests.swift */; };
 		DA6626181F3D61930041A65C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA6626171F3D61930041A65C /* MapKit.framework */; };
 		DA9E0A321F4CC6D000715258 /* WeatherUnderground.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9E0A311F4CC6D000715258 /* WeatherUnderground.swift */; };
+		DAB2E5251F57731E00615770 /* WSListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB2E5241F57731E00615770 /* WSListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +43,7 @@
 		DA49D1371F564B23005D5F1A /* Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
 		DA6625E51F3D617A0041A65C /* WeatherStations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherStations.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA6625E81F3D617A0041A65C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DA6625EA1F3D617A0041A65C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DA6625EA1F3D617A0041A65C /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		DA6625ED1F3D617A0041A65C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DA6625EF1F3D617A0041A65C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA6625F21F3D617A0041A65C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -56,6 +57,7 @@
 		DA6626171F3D61930041A65C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		DA9E0A311F4CC6D000715258 /* WeatherUnderground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherUnderground.swift; sourceTree = "<group>"; };
 		DA9E0A331F4CE78200715258 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		DAB2E5241F57731E00615770 /* WSListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WSListTableViewCell.swift; path = ../WSListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,8 +110,9 @@
 		DA6625E71F3D617A0041A65C /* WeatherStations */ = {
 			isa = PBXGroup;
 			children = (
+				DAB2E5241F57731E00615770 /* WSListTableViewCell.swift */,
 				DA6625E81F3D617A0041A65C /* AppDelegate.swift */,
-				DA6625EA1F3D617A0041A65C /* ViewController.swift */,
+				DA6625EA1F3D617A0041A65C /* MapVC.swift */,
 				DA6625EC1F3D617A0041A65C /* Main.storyboard */,
 				DA6625EF1F3D617A0041A65C /* Assets.xcassets */,
 				DA6625F11F3D617A0041A65C /* LaunchScreen.storyboard */,
@@ -292,7 +295,8 @@
 			files = (
 				DA49D1381F564B23005D5F1A /* Pin.swift in Sources */,
 				DA9E0A321F4CC6D000715258 /* WeatherUnderground.swift in Sources */,
-				DA6625EB1F3D617A0041A65C /* ViewController.swift in Sources */,
+				DA6625EB1F3D617A0041A65C /* MapVC.swift in Sources */,
+				DAB2E5251F57731E00615770 /* WSListTableViewCell.swift in Sources */,
 				DA2B20B91F4B8E2800D6E5F6 /* Map.swift in Sources */,
 				DA6625E91F3D617A0041A65C /* AppDelegate.swift in Sources */,
 			);

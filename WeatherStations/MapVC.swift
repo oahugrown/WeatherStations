@@ -9,10 +9,13 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController {
+class MapVC: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var segmentController: UISegmentedControl!
+    @IBOutlet weak var listButton: UIBarButtonItem!
    
+    var active: Bool = false
     var map : Map!
     
     override func viewDidLoad() {
@@ -25,6 +28,12 @@ class ViewController: UIViewController {
 
         let location = sender.location(in: map.getMapView())
         map.mapTapped(_location: location);
+        
+        if !active {
+            active = true
+            segmentController.isEnabled = true
+            listButton.isEnabled = true
+        }
     }
     
     @IBAction func changeStationType(_ sender: UISegmentedControl) {

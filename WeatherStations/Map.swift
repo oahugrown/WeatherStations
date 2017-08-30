@@ -103,11 +103,9 @@ class Map {
                 station = weatherUnderground.getNearbyAPStationCoor(index: index)
             }
             
-            
             let coordinate = CLLocationCoordinate2D(latitude: station[0], longitude: station[1])
             annotation.coordinate = coordinate
             mapView.addAnnotation(annotation)
         }
     }
-
 }
