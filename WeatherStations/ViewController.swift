@@ -18,13 +18,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        map = Map(mapInEditor: mapView)
+        map = Map(_mapInEditor: mapView)
     }
     
     @IBAction func handleTap(_ sender: UITapGestureRecognizer) {
 
         let location = sender.location(in: map.getMapView())
-        map.mapTapped(location: location);
+        map.mapTapped(_location: location);
     }
 }
 

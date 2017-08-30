@@ -12,14 +12,20 @@ import Foundation
 class Map {
     
     var mapView: MKMapView!
-    let regionRadius: CLLocationDistance = 1500000
+    var weatherUnderground: WeatherUnderground!
+    let regionRadius: CLLocationDistance = 400000
+    
+    // San Franciso Location
+    let startLong: Double = -122.395234
+    let startLat: Double = 37.776289
     
     
     // ----------------------------------------------------------
     // EXTERNAL
 
-    init(mapInEditor: MKMapView){
-        mapView = mapInEditor
+    init(_mapInEditor: MKMapView){
+        mapView = _mapInEditor
+        weatherUnderground = WeatherUnderground()
         
         // Starts the Map view and focus it on Fresno, CA
         let initialLocation = CLLocation(latitude: 36.746841, longitude: -119.772591)
@@ -28,16 +34,24 @@ class Map {
         mapView.setRegion(coordinateRegion, animated: true)
     }
     
+    
     func getMapView()->MKMapView {
         return mapView
     }
     
-    func mapTapped(location: CGPoint) {
-        
+    
+    func mapTapped(_location: CGPoint) {
+        // Clear the map view of annotations
         mapView.removeAnnotations(mapView.annotations)
         
+        // Getting map coordinates
+        let coordinate = mapView.convert(_location,toCoordinateFrom: mapView)
+        
+        // Update weather data
+        weatherUnderground.update(_latitude: coordinate.latitude, _longitude: coordinate.longitude)
+        
         // Creates a new annotation where user tapped and updates data for it
-        addTappedAnnotation(location: location)
+        addTappedAnnotation(_coordinate: coordinate)
         
         // Gets 5 random stations nearby and
         showOtherStations()
@@ -46,37 +60,12 @@ class Map {
     // ----------------------------------------------------------
     // INTERNAL
     
-    private func addTappedAnnotation(location: CGPoint) {
-        let coordinate = mapView.convert(location,toCoordinateFrom: mapView)
-        
-        // parse data
-        let preKey: String = "http://api.wunderground.com/api/"
-        let key: String = "44420252a5dfc9af"
-        var postKey: String = "/conditions/q/CA/Fresno.json"
-        let fileExt: String = ".json"
-        postKey = String("/geolookup/q/\(coordinate.latitude),\(coordinate.longitude)")
-        let urlString = String(preKey + key + postKey + fileExt)
-        print(urlString!)
-        
-        // request url
-        let url = URL(string: urlString!)
-        let session = URLSession.shared
-        let request = URLRequest(url: url!)
-        
-        let task = session.dataTask(with: request, completionHandler: {
-            (data, response, error) in
-            
-            self.extractData(data: data)
+    private func addTappedAnnotation(_coordinate: CLLocationCoordinate2D) {
 
-        })
-        
-        task.resume()
-        
         // Add annotation to view
         let annotation = MKPointAnnotation()
-        annotation.coordinate = coordinate
-        annotation.title = getCityName(location: coordinate)
-        annotation.subtitle = String(coordinate.longitude)
+        annotation.coordinate = _coordinate
+        annotation.title = weatherUnderground.getCityState(dict: weatherUnderground.tappedLocation!)
         
         // Display annotation pin on map
         mapView.addAnnotation(annotation)
@@ -86,36 +75,18 @@ class Map {
         
     }
     
-     func showOtherStations(){
-        //
-    }
-    
-    func extractData(data: Data?) {
-        let json: Any?
-        if (data == nil) {
-            return
-        }
-        
-        do {
-            json = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers)
-        }
-        
-        catch {
-            return
-        }
-      
-        if let dict = json as? [String: AnyObject] {
-
-            if let dataLocation = dict["location"] as? [String: AnyObject] {
-                print(dataLocation["city"]!)
+     func showOtherStations() {
+        for index in 0...4 {
+            let annotation = MKPointAnnotation()
+            if index >= (weatherUnderground.neighborPWStations?.count)! {
+                break
             }
+            
+            let station = weatherUnderground.getNearbyPWSStationCoor(index: index)
+            let coordinate = CLLocationCoordinate2D(latitude: station[0], longitude: station[1])
+            annotation.coordinate = coordinate
+            
+            mapView.addAnnotation(annotation)
         }
-        print("Done extracting")
     }
-    
-    func getCityName(location: CLLocationCoordinate2D)->String {
-        
-    return ""
-    }
-
 }
