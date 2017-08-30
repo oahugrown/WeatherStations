@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DA2B20B91F4B8E2800D6E5F6 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2B20B81F4B8E2800D6E5F6 /* Map.swift */; };
+		DA49D1381F564B23005D5F1A /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA49D1371F564B23005D5F1A /* Pin.swift */; };
 		DA6625E91F3D617A0041A65C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6625E81F3D617A0041A65C /* AppDelegate.swift */; };
 		DA6625EB1F3D617A0041A65C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6625EA1F3D617A0041A65C /* ViewController.swift */; };
 		DA6625EE1F3D617A0041A65C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA6625EC1F3D617A0041A65C /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		DA2B20B81F4B8E2800D6E5F6 /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
+		DA49D1371F564B23005D5F1A /* Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
 		DA6625E51F3D617A0041A65C /* WeatherStations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherStations.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA6625E81F3D617A0041A65C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA6625EA1F3D617A0041A65C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				DA6625F41F3D617A0041A65C /* Info.plist */,
 				DA2B20B81F4B8E2800D6E5F6 /* Map.swift */,
 				DA9E0A311F4CC6D000715258 /* WeatherUnderground.swift */,
+				DA49D1371F564B23005D5F1A /* Pin.swift */,
 			);
 			path = WeatherStations;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA49D1381F564B23005D5F1A /* Pin.swift in Sources */,
 				DA9E0A321F4CC6D000715258 /* WeatherUnderground.swift in Sources */,
 				DA6625EB1F3D617A0041A65C /* ViewController.swift in Sources */,
 				DA2B20B91F4B8E2800D6E5F6 /* Map.swift in Sources */,

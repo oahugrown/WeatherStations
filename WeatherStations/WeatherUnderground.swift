@@ -138,11 +138,11 @@ class WeatherUnderground {
         
         var result: Array<Double> = Array<Double> (repeatElement(0.0, count: 2))
         
-        let stationLat = neighborPWStations?[index]["lat"] as! String
-        result[0] = Double(stationLat)!
+        let stationLat = neighborPWStations?[index]["lat"] as! Double
+        result[0] = stationLat
         
-        let stationLon = neighborPWStations?[index]["lon"] as! String
-        result[1] = Double(stationLon)!
+        let stationLon = neighborPWStations?[index]["lon"] as! Double
+        result[1] = stationLon
         
         return result
     }

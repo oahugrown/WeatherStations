@@ -9,21 +9,26 @@
 import MapKit
 import Foundation
 
+enum StationType {case personal, airport }
+
 class Map {
     
     var mapView: MKMapView!
     var weatherUnderground: WeatherUnderground!
-    let regionRadius: CLLocationDistance = 400000
+    var stationType: StationType = StationType.personal
     
-    // San Franciso Location
+    var tappedPin: Pin = Pin()
+    
+    // Fresno, CA Location
     let startLong: Double = -122.395234
     let startLat: Double = 37.776289
-    
+    let regionRadius: CLLocationDistance = 150000
     
     // ----------------------------------------------------------
     // EXTERNAL
 
     init(_mapInEditor: MKMapView){
+        
         mapView = _mapInEditor
         weatherUnderground = WeatherUnderground()
         
@@ -31,6 +36,7 @@ class Map {
         let initialLocation = CLLocation(latitude: 36.746841, longitude: -119.772591)
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(initialLocation.coordinate, regionRadius, regionRadius)
         
+        // Set view region on map
         mapView.setRegion(coordinateRegion, animated: true)
     }
     
@@ -41,9 +47,6 @@ class Map {
     
     
     func mapTapped(_location: CGPoint) {
-        // Clear the map view of annotations
-        mapView.removeAnnotations(mapView.annotations)
-        
         // Getting map coordinates
         let coordinate = mapView.convert(_location,toCoordinateFrom: mapView)
         
@@ -51,42 +54,60 @@ class Map {
         weatherUnderground.update(_latitude: coordinate.latitude, _longitude: coordinate.longitude)
         
         // Creates a new annotation where user tapped and updates data for it
-        addTappedAnnotation(_coordinate: coordinate)
+        updateTappedPin(_coordinate: coordinate)
         
-        // Gets 5 random stations nearby and
-        showOtherStations()
+        // Gets 5 random stations nearby
+        displayPins()
     }
     
-    // ----------------------------------------------------------
-    // INTERNAL
-    
-    private func addTappedAnnotation(_coordinate: CLLocationCoordinate2D) {
-
-        // Add annotation to view
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = _coordinate
-        annotation.title = weatherUnderground.getCityState(dict: weatherUnderground.tappedLocation!)
+    func displayPins(){
+        mapView.removeAnnotations(mapView.annotations)
+        // show other stations
+        showOtherStations()
         
-        // Display annotation pin on map
-        mapView.addAnnotation(annotation)
+        // Display tapped pin on map
+        mapView.addAnnotation(tappedPin)
         
         // Display details on annotation pin
         mapView.selectAnnotation(mapView.annotations[0], animated: true)
         
     }
     
-     func showOtherStations() {
+    // ----------------------------------------------------------
+    // INTERNAL
+    
+    private func updateTappedPin(_coordinate: CLLocationCoordinate2D) {
+
+        // Add annotation to view
+        tappedPin.coordinate = _coordinate
+        tappedPin.title = weatherUnderground.getCityState(dict: weatherUnderground.tappedLocation!)
+        
+    }
+    
+    func showOtherStations() {
         for index in 0...4 {
-            let annotation = MKPointAnnotation()
-            if index >= (weatherUnderground.neighborPWStations?.count)! {
-                break
+            let annotation = Pin()
+            var station = Array<Double>()
+            
+            if stationType == StationType.personal {
+                if index >= (weatherUnderground.neighborPWStations?.count)! {
+                    break
+                }
+                station = weatherUnderground.getNearbyPWSStationCoor(index: index)
+            }
+                
+            else if stationType == StationType.airport {
+                if index >= (weatherUnderground.neighborAPStations?.count)! {
+                    break
+                }
+                station = weatherUnderground.getNearbyAPStationCoor(index: index)
             }
             
-            let station = weatherUnderground.getNearbyPWSStationCoor(index: index)
+            
             let coordinate = CLLocationCoordinate2D(latitude: station[0], longitude: station[1])
             annotation.coordinate = coordinate
-            
             mapView.addAnnotation(annotation)
         }
     }
+
 }

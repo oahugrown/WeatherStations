@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,20 +22,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsBuildings="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jpx-Aa-BuK">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsBuildings="NO" showsPointsOfInterest="NO" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jpx-Aa-BuK">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="gJe-js-nOJ" appends="YES" id="h6c-Xq-FWT"/>
                                 </connections>
                             </mapView>
+                            <segmentedControl opaque="NO" alpha="0.80000000000000004" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cdc-JB-YS5">
+                                <rect key="frame" x="80" y="70" width="215" height="29"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <segments>
+                                    <segment title="Personal"/>
+                                    <segment title="Airport"/>
+                                </segments>
+                                <connections>
+                                    <action selector="changeStationType:" destination="BYZ-38-t0r" eventType="valueChanged" id="EJW-xn-fSg"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="cdc-JB-YS5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="64" id="5bt-59-WLK"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Jpx-Aa-BuK" secondAttribute="bottom" id="DKB-qY-uDi"/>
                             <constraint firstAttribute="trailing" secondItem="Jpx-Aa-BuK" secondAttribute="trailing" id="DTy-ct-CH7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cdc-JB-YS5" secondAttribute="trailing" constant="64" id="EYZ-QI-R20"/>
                             <constraint firstItem="Jpx-Aa-BuK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="h4c-PL-edY"/>
                             <constraint firstItem="Jpx-Aa-BuK" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="hIu-E8-AYg"/>
+                            <constraint firstItem="cdc-JB-YS5" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="i9v-We-lpf"/>
                         </constraints>
                     </view>
                     <connections>
@@ -48,7 +63,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
+            <point key="canvasLocation" x="166" y="139"/>
         </scene>
     </scenes>
 </document>
