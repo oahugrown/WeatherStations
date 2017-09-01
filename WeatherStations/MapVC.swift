@@ -26,8 +26,7 @@ class MapVC: UIViewController {
     }
     
     
-    @IBAction func handleTap(_ sender: UITapGestureRecognizer) {
-
+    @IBAction func handleTap(_ sender: UILongPressGestureRecognizer) {
         let location = sender.location(in: map.getMapView())
         map.mapTapped(_location: location);
         
@@ -37,6 +36,7 @@ class MapVC: UIViewController {
             listButton.isEnabled = true
         }
     }
+
     
     @IBAction func changeStationType(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {

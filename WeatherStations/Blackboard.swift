@@ -88,6 +88,16 @@ final class Blackboard {
         
         return result
     }
+    
+    
+    func getAPStationCount()-> Int {
+        return neighborAPStations!.count
+    }
+    
+    
+    func getPWStationCount()-> Int {
+        return neighborPWStations!.count
+    }
 }
 
 

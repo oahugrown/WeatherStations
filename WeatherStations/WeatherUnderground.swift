@@ -37,7 +37,7 @@ class WeatherUnderground {
     
     
     // Getting data from new location
-    func requestData(){
+    private func requestData(){
         let urlString = String(preKey + key + postKey + fileExt)
         let semaphore = DispatchSemaphore(value: 0)
         
@@ -60,7 +60,7 @@ class WeatherUnderground {
     }
     
     // Extracts and stores data
-    func extractData(_data: Data?){
+    private func extractData(_data: Data?){
         let json: Any?
         if (_data == nil) {
             print("_data nil: WeatherUngrounder.extractData()")

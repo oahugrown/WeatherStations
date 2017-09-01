@@ -39,6 +39,12 @@ class Map {
         
         // Set view region on map
         mapView.setRegion(coordinateRegion, animated: true)
+        
+        // set tapped pin
+        tappedPin.annotationView.pinTintColor = MKPinAnnotationView.greenPinColor()
+        tappedPin.annotationView.animatesDrop = true
+        tappedPin.annotationView.canShowCallout = true
+        
     }
     
     
@@ -69,13 +75,13 @@ class Map {
     func refreshPins(){
         mapView.removeAnnotations(mapView.annotations)
         
-        showOtherStations()
-        
         // Display tapped pin on map
         mapView.addAnnotation(tappedPin)
         
-        // Display details on annotation pin
-        mapView.selectAnnotation(mapView.annotations[0], animated: true)
+        showOtherStations()
+        
+        // Display details on tapped pin
+        self.mapView.selectAnnotation(tappedPin, animated: true)
     }
     
     
@@ -84,10 +90,9 @@ class Map {
     
     private func updateTappedPin(_coordinate: CLLocationCoordinate2D) {
 
-        // Add annotation to view
+        // setup tapped pin
         tappedPin.coordinate = _coordinate
         tappedPin.title = Blackboard.data.getCityState(dict: weatherUnderground.tappedLocation!)
-        
     }
     
     
@@ -97,14 +102,14 @@ class Map {
             var station = Array<Double>()
             
             if stationType == StationType.personal {
-                if index >= (weatherUnderground.neighborPWStations?.count)! {
+                if index >= Blackboard.data.getPWStationCount() {
                     break
                 }
                 station = Blackboard.data.getNearbyPWSStationCoor(index: index)
             }
                 
             else if stationType == StationType.airport {
-                if index >= (weatherUnderground.neighborAPStations?.count)! {
+                if index >= Blackboard.data.getAPStationCount() {
                     break
                 }
                 station = Blackboard.data.getNearbyAPStationCoor(index: index)

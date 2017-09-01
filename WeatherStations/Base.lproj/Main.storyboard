@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -26,10 +25,10 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="575"/>
                                 <gestureRecognizers/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="gJe-js-nOJ" appends="YES" id="h6c-Xq-FWT"/>
+                                    <outletCollection property="gestureRecognizers" destination="AWA-CH-4k2" appends="YES" id="daq-S1-jSS"/>
                                 </connections>
                             </mapView>
-                            <segmentedControl opaque="NO" contentMode="center" misplaced="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cdc-JB-YS5">
+                            <segmentedControl opaque="NO" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cdc-JB-YS5">
                                 <rect key="frame" x="0.0" y="64" width="375" height="29"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <segments>
@@ -43,16 +42,14 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="cdc-JB-YS5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="5bt-59-WLK"/>
                             <constraint firstAttribute="trailing" secondItem="cdc-JB-YS5" secondAttribute="trailing" id="Buo-ZG-Za4"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Jpx-Aa-BuK" secondAttribute="bottom" id="DKB-qY-uDi"/>
                             <constraint firstAttribute="trailing" secondItem="Jpx-Aa-BuK" secondAttribute="trailing" id="DTy-ct-CH7"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="cdc-JB-YS5" secondAttribute="trailing" id="EYZ-QI-R20"/>
                             <constraint firstItem="cdc-JB-YS5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="K4x-M4-JGV"/>
                             <constraint firstItem="Jpx-Aa-BuK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="h4c-PL-edY"/>
                             <constraint firstItem="Jpx-Aa-BuK" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="92" id="hIu-E8-AYg"/>
                             <constraint firstItem="cdc-JB-YS5" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="i9v-We-lpf"/>
-                            <constraint firstItem="cdc-JB-YS5" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="lwB-rv-k2C"/>
+                            <constraint firstItem="cdc-JB-YS5" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="lwB-rv-k2C"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Weather Stations Map" id="Tec-gL-Xi2">
@@ -69,11 +66,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="gJe-js-nOJ">
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.02" id="AWA-CH-4k2">
                     <connections>
-                        <action selector="handleTap:" destination="BYZ-38-t0r" id="G4P-H4-eh6"/>
+                        <action selector="handleTap:" destination="BYZ-38-t0r" id="Fry-FT-2kV"/>
                     </connections>
-                </tapGestureRecognizer>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1104.8" y="138.98050974512745"/>
         </scene>
