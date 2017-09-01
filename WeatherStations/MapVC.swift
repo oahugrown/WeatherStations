@@ -22,7 +22,9 @@ class MapVC: UIViewController {
         super.viewDidLoad()
         
         map = Map(_mapInEditor: mapView)
+        Blackboard.data.map = map
     }
+    
     
     @IBAction func handleTap(_ sender: UITapGestureRecognizer) {
 
@@ -43,7 +45,7 @@ class MapVC: UIViewController {
         default:
             map.stationType = StationType.personal
         }
-        map.displayPins()
+        map.refreshPins()
     }
 }
 

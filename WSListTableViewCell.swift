@@ -9,21 +9,13 @@
 import Foundation
 import UIKit
 
-//struct Station {
-//    var name = String?
-//    
-//
-//}
 
 class WSListTableViewCell: UITableViewCell {
     
-//    var stations: Array<Station>?
-//    
-//    
-//    private func loadStations() {
-//        for index 0...50 {
-//            
-//            
-//        }
-//    }
+    @IBOutlet weak var stationType: UITextField!
+    
+    @IBOutlet weak var cityState: UITextField!
+
+    @IBOutlet weak var temp: UITextField!
+    
 }

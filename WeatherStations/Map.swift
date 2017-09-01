@@ -24,9 +24,10 @@ class Map {
     let startLat: Double = 37.776289
     let regionRadius: CLLocationDistance = 150000
     
+    
     // ----------------------------------------------------------
     // EXTERNAL
-
+    
     init(_mapInEditor: MKMapView){
         
         mapView = _mapInEditor
@@ -53,16 +54,22 @@ class Map {
         // Update weather data
         weatherUnderground.update(_latitude: coordinate.latitude, _longitude: coordinate.longitude)
         
+        // If data update failed, bail
+        if !Blackboard.data.validData {
+            return
+        }
+        
         // Creates a new annotation where user tapped and updates data for it
         updateTappedPin(_coordinate: coordinate)
         
         // Gets 5 random stations nearby
-        displayPins()
+        refreshPins()
     }
     
-    func displayPins(){
+    // Clears all annotations on the map, and redisplays all pins
+    func refreshPins(){
         mapView.removeAnnotations(mapView.annotations)
-        // show other stations
+        
         showOtherStations()
         
         // Display tapped pin on map
@@ -70,8 +77,8 @@ class Map {
         
         // Display details on annotation pin
         mapView.selectAnnotation(mapView.annotations[0], animated: true)
-        
     }
+    
     
     // ----------------------------------------------------------
     // INTERNAL
@@ -80,11 +87,12 @@ class Map {
 
         // Add annotation to view
         tappedPin.coordinate = _coordinate
-        tappedPin.title = weatherUnderground.getCityState(dict: weatherUnderground.tappedLocation!)
+        tappedPin.title = Blackboard.data.getCityState(dict: weatherUnderground.tappedLocation!)
         
     }
     
-    func showOtherStations() {
+    
+    private func showOtherStations() {
         for index in 0...4 {
             let annotation = Pin()
             var station = Array<Double>()
@@ -93,14 +101,14 @@ class Map {
                 if index >= (weatherUnderground.neighborPWStations?.count)! {
                     break
                 }
-                station = weatherUnderground.getNearbyPWSStationCoor(index: index)
+                station = Blackboard.data.getNearbyPWSStationCoor(index: index)
             }
                 
             else if stationType == StationType.airport {
                 if index >= (weatherUnderground.neighborAPStations?.count)! {
                     break
                 }
-                station = weatherUnderground.getNearbyAPStationCoor(index: index)
+                station = Blackboard.data.getNearbyAPStationCoor(index: index)
             }
             
             let coordinate = CLLocationCoordinate2D(latitude: station[0], longitude: station[1])
