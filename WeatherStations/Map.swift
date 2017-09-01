@@ -62,7 +62,6 @@ class Map {
         // Creates a new annotation where user tapped and updates data for it
         updateTappedPin(_coordinate: coordinate)
         
-        // Gets 5 random stations nearby
         refreshPins()
     }
     

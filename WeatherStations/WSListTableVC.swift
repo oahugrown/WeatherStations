@@ -23,8 +23,7 @@ class WSListTableVC: UITableViewController {
     // calls multiple times in lifetime right before view shows for the user
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("what")
-        
+
         loadStations()
     }
     
@@ -74,8 +73,8 @@ class WSListTableVC: UITableViewController {
             }
                 
             // no more stations to add so break
-            else if (apStationIndex >= (Blackboard.data.neighborAPStations?.count)!){
-                return
+            else if (apStationIndex >= (Blackboard.data.neighborAPStations?.count)!) {
+                break
             }
             
             // For airport weather stations
@@ -87,13 +86,10 @@ class WSListTableVC: UITableViewController {
             stations.append(station)
         }
         
-//        station.cityState = "San Francisco, CA"
-//        station.temp = "64.1 F (17.8 C)"
-//        station.type = "personal"
-//        
-//        stations.append(station)
-//        stations.append(station)
-//        stations.append(station)
+        // sort them alphabetically by City, State
+        self.stations.sort {
+            $0.cityState?.localizedCaseInsensitiveCompare($1.cityState!) == ComparisonResult.orderedAscending
+        }
     }
 }
 
