@@ -15,6 +15,7 @@ final class Blackboard {
     
     var map: Map!
     var tappedLocation: Dictionary<String, AnyObject>?
+    var temperature: String?
     var neighborPWStations: Array<Dictionary<String, AnyObject>>?
     var neighborAPStations: Array<Dictionary<String, AnyObject>>?
     

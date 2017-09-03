@@ -16,4 +16,5 @@ class Pin: NSObject, MKAnnotation {
     let annotationView: MKPinAnnotationView = MKPinAnnotationView()
     
     var title: String?
+    var subtitle: String?
 }

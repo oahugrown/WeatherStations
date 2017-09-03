@@ -26,6 +26,7 @@ class MapVC: UIViewController {
     }
     
     
+    // Notifies map where the user tapped so then map can get the pin information
     @IBAction func handleTap(_ sender: UILongPressGestureRecognizer) {
         let location = sender.location(in: map.getMapView())
         map.mapTapped(_location: location);
@@ -38,6 +39,7 @@ class MapVC: UIViewController {
     }
 
     
+    // Segment control for switching between viewing airport and personal stations
     @IBAction func changeStationType(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 1:

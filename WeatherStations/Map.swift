@@ -90,9 +90,16 @@ class Map {
     
     private func updateTappedPin(_coordinate: CLLocationCoordinate2D) {
 
-        // setup tapped pin
+        // Setup tapped pin
         tappedPin.coordinate = _coordinate
         tappedPin.title = Blackboard.data.getCityState(dict: weatherUnderground.tappedLocation!)
+        
+        // Setup temp if temperature is valid
+        let temp = Blackboard.data.temperature
+        if temp == nil {
+            return
+        }
+        tappedPin.subtitle = temp
     }
     
     

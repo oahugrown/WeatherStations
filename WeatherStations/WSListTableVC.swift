@@ -55,6 +55,7 @@ class WSListTableVC: UITableViewController {
         cell.temp.text = station.temp
         cell.stationType.text = station.type
         
+        
         return cell
     }
     
@@ -65,6 +66,7 @@ class WSListTableVC: UITableViewController {
         
         for index in 0...50 {
             var station = Station()
+            station.temp = Blackboard.data.temperature
             
             // For personal weather stations
             if (index < (Blackboard.data.neighborPWStations?.count)!) {
