@@ -61,7 +61,7 @@
 		DA807AC51F58D21300C749EB /* Blackboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blackboard.swift; sourceTree = "<group>"; };
 		DA9E0A311F4CC6D000715258 /* WeatherUnderground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherUnderground.swift; sourceTree = "<group>"; };
 		DA9E0A331F4CE78200715258 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		DAB2E5241F57731E00615770 /* WSListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WSListTableViewCell.swift; path = ../WSListTableViewCell.swift; sourceTree = "<group>"; };
+		DAB2E5241F57731E00615770 /* WSListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
