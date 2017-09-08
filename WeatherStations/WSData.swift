@@ -1,24 +1,19 @@
 //
-//  Blackboard.swift
+//  WSData.swift
 //  WeatherStations
 //
-//  Created by Yvonne Yeung on 8/31/17.
+//  Created by Yvonne Yeung on 9/7/17.
 //  Copyright © 2017 Yvonne Yeung. All rights reserved.
 //
 
 import Foundation
 
-final class Blackboard {
-    static let data = Blackboard()
-    
-    var validData: Bool = false
-    
-    var map: Map!
+class WSData {
     var tappedLocation: Dictionary<String, AnyObject>?
     var temperature: String?
     var neighborPWStations: Array<Dictionary<String, AnyObject>>?
     var neighborAPStations: Array<Dictionary<String, AnyObject>>?
-    
+    var isValid: Bool = false
     
     // returns in format "City, State"
     func getCityState(dict: Dictionary<String, AnyObject>)-> String {
@@ -99,6 +94,5 @@ final class Blackboard {
     func getPWStationCount()-> Int {
         return neighborPWStations!.count
     }
+
 }
-
-

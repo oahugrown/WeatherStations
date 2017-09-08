@@ -13,7 +13,7 @@
         <!--MapVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="MapVC" id="BYZ-38-t0r" customClass="MapVC" customModule="WeatherStations" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapVC" title="MapVC" id="BYZ-38-t0r" customClass="MapVC" customModule="WeatherStations" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -57,7 +57,7 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="Ic2-lx-iBs"/>
                         <barButtonItem key="rightBarButtonItem" enabled="NO" title="List" id="MRx-ac-ymT">
                             <connections>
-                                <segue destination="4k8-h1-RFt" kind="show" id="4wB-hm-rOq"/>
+                                <action selector="listView:" destination="BYZ-38-t0r" id="i16-a4-bk1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -79,7 +79,7 @@
         <!--Weather Stations List-->
         <scene sceneID="flP-bZ-xoj">
             <objects>
-                <tableViewController title="Weather Stations List" id="4k8-h1-RFt" customClass="WSListTableVC" customModule="WeatherStations" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="TableVC" title="Weather Stations List" id="4k8-h1-RFt" customClass="WSListTableVC" customModule="WeatherStations" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="Aae-Rm-z5R">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -89,23 +89,23 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LxI-8W-aAZ" id="Noo-nm-vHE">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="City, State" textAlignment="natural" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="FG2-mz-ndp">
-                                            <rect key="frame" x="8" y="8" width="231" height="30"/>
+                                        <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="City, State" textAlignment="natural" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="FG2-mz-ndp">
+                                            <rect key="frame" x="8" y="8" width="161.5" height="42"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Temp" textAlignment="right" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="GJf-KM-j6r">
-                                            <rect key="frame" x="185" y="46" width="182" height="40"/>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Temp" textAlignment="right" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="GJf-KM-j6r">
+                                            <rect key="frame" x="245.5" y="28" width="121.5" height="58"/>
                                             <color key="textColor" red="0.062531984121217743" green="0.046941366925500994" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="48"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type" textAlignment="natural" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="YZJ-qY-hoG">
-                                            <rect key="frame" x="8" y="38" width="184" height="30"/>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type" textAlignment="natural" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="YZJ-qY-hoG">
+                                            <rect key="frame" x="8" y="50" width="48" height="24"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <textInputTraits key="textInputTraits"/>

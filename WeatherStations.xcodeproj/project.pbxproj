@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA10015B1F6200F400DD108A /* WSData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA10015A1F6200F400DD108A /* WSData.swift */; };
 		DA2B20B91F4B8E2800D6E5F6 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2B20B81F4B8E2800D6E5F6 /* Map.swift */; };
 		DA49D1381F564B23005D5F1A /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA49D1371F564B23005D5F1A /* Pin.swift */; };
 		DA6625E91F3D617A0041A65C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6625E81F3D617A0041A65C /* AppDelegate.swift */; };
@@ -18,7 +19,6 @@
 		DA6626091F3D617A0041A65C /* WeatherStationsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6626081F3D617A0041A65C /* WeatherStationsUITests.swift */; };
 		DA6626181F3D61930041A65C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA6626171F3D61930041A65C /* MapKit.framework */; };
 		DA7E75221F57909E004E53EE /* WSListTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7E75211F57909E004E53EE /* WSListTableVC.swift */; };
-		DA807AC61F58D21300C749EB /* Blackboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA807AC51F58D21300C749EB /* Blackboard.swift */; };
 		DA9E0A321F4CC6D000715258 /* WeatherUnderground.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9E0A311F4CC6D000715258 /* WeatherUnderground.swift */; };
 		DAB2E5251F57731E00615770 /* WSListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB2E5241F57731E00615770 /* WSListTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -41,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DA10015A1F6200F400DD108A /* WSData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSData.swift; sourceTree = "<group>"; };
 		DA2B20B81F4B8E2800D6E5F6 /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		DA49D1371F564B23005D5F1A /* Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
 		DA6625E51F3D617A0041A65C /* WeatherStations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherStations.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,7 +59,6 @@
 		DA66260A1F3D617A0041A65C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA6626171F3D61930041A65C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		DA7E75211F57909E004E53EE /* WSListTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSListTableVC.swift; sourceTree = "<group>"; };
-		DA807AC51F58D21300C749EB /* Blackboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blackboard.swift; sourceTree = "<group>"; };
 		DA9E0A311F4CC6D000715258 /* WeatherUnderground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherUnderground.swift; sourceTree = "<group>"; };
 		DA9E0A331F4CE78200715258 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		DAB2E5241F57731E00615770 /* WSListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSListTableViewCell.swift; sourceTree = "<group>"; };
@@ -117,11 +117,11 @@
 				DA807AC91F58D36900C749EB /* StationListVC */,
 				DA807AC71F58D32A00C749EB /* MapVC */,
 				DA6625E81F3D617A0041A65C /* AppDelegate.swift */,
-				DA807AC51F58D21300C749EB /* Blackboard.swift */,
 				DA6625EC1F3D617A0041A65C /* Main.storyboard */,
 				DA6625EF1F3D617A0041A65C /* Assets.xcassets */,
 				DA6625F11F3D617A0041A65C /* LaunchScreen.storyboard */,
 				DA6625F41F3D617A0041A65C /* Info.plist */,
+				DA10015A1F6200F400DD108A /* WSData.swift */,
 			);
 			path = WeatherStations;
 			sourceTree = "<group>";
@@ -315,7 +315,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA807AC61F58D21300C749EB /* Blackboard.swift in Sources */,
+				DA10015B1F6200F400DD108A /* WSData.swift in Sources */,
 				DA49D1381F564B23005D5F1A /* Pin.swift in Sources */,
 				DA9E0A321F4CC6D000715258 /* WeatherUnderground.swift in Sources */,
 				DA6625EB1F3D617A0041A65C /* MapVC.swift in Sources */,

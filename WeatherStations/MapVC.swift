@@ -17,14 +17,22 @@ class MapVC: UIViewController {
    
     var active: Bool = false
     var map : Map!
+    var tableVC: WSListTableVC?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         map = Map(_mapInEditor: mapView)
-        Blackboard.data.map = map
+        
+        tableVC = self.storyboard?.instantiateViewController(withIdentifier: "TableVC") as? WSListTableVC
+        map.delegate = tableVC        
     }
     
+    // Called when the user hits the "List" button 
+    @IBAction func listView(_ sender: UIBarButtonItem) {
+        self.navigationController?.pushViewController(tableVC!, animated: true)
+    }
+
     
     // Notifies map where the user tapped so then map can get the pin information
     @IBAction func handleTap(_ sender: UILongPressGestureRecognizer) {

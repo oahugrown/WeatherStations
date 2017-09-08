@@ -19,14 +19,11 @@ class WeatherUnderground {
     
     var postKey: String = "postKey"
     
-    var tappedLocation: Dictionary<String, AnyObject>?
-    var neighborPWStations: Array<Dictionary<String, AnyObject>>?
-    var neighborAPStations: Array<Dictionary<String, AnyObject>>?
-    
+    let wsData: WSData = WSData()
     
     init() {
+        
     }
-    
     
     // Update data to new location
     func update(_latitude: Double, _longitude: Double) {
@@ -37,14 +34,8 @@ class WeatherUnderground {
         // Gathering station list information
         requestData()
         
-        
-        // Getting temperature if we successfully extracted data
-        if !Blackboard.data.validData {
-            return
-        }
-        
-        
-        if let requestURL = tappedLocation!["requesturl"] as? String {
+        // Getting temperature
+        if let requestURL = wsData.tappedLocation!["requesturl"] as? String {
             // Remove ".html" from requestURL
             let endIndex = requestURL.index(requestURL.endIndex, offsetBy: -5)
             let url = requestURL.substring(to: endIndex)
@@ -121,13 +112,13 @@ class WeatherUnderground {
                 
                 if let temperatureString = currentObservation["temperature_string"] as? String {
                     // Updating Blackboard
-                    Blackboard.data.temperature = temperatureString
+                    wsData.temperature = temperatureString
                 
                     return  // hits if extraction was successful
                 }
             }
         }
-        Blackboard.data.temperature = nil
+        wsData.temperature = nil
         print("Failed to extract temperature")
     }
     
@@ -151,36 +142,27 @@ class WeatherUnderground {
             
             // Get tapped data
             if let dataLocation = dict["location"] as? Dictionary<String, AnyObject> {
-                tappedLocation = dataLocation
+                wsData.tappedLocation = dataLocation
                 
-                neighborPWStations?.removeAll()
-                neighborAPStations?.removeAll()
+                wsData.neighborPWStations?.removeAll()
+                wsData.neighborAPStations?.removeAll()
                 
                 // Getting neighborStations
                 if let nearbyStations = dataLocation["nearby_weather_stations"] as? Dictionary<String, AnyObject> {
                     if let pws = nearbyStations["pws"] as? Dictionary<String, AnyObject> {
-                        neighborPWStations = pws["station"] as? Array<Dictionary<String, AnyObject>>
+                        wsData.neighborPWStations = pws["station"] as? Array<Dictionary<String, AnyObject>>
                     }
                         
                     if let airport = nearbyStations["airport"] as? Dictionary<String, AnyObject> {
-                        neighborAPStations = airport["station"] as? Array<Dictionary<String, AnyObject>>
+                        wsData.neighborAPStations = airport["station"] as? Array<Dictionary<String, AnyObject>>
                     }
                 }
-                
-                // Updating Blackboard
-                updateBlackboard()
+                wsData.isValid = true
                 return  // hits if extraction was successful
             }
         }
         print("Failed to extract tappedLocation")
-        Blackboard.data.validData = false
-    }
-    
-    private func updateBlackboard() {
-        Blackboard.data.tappedLocation = tappedLocation
-        Blackboard.data.neighborAPStations = neighborAPStations
-        Blackboard.data.neighborPWStations = neighborPWStations
-        Blackboard.data.validData = true
+        wsData.isValid = false
     }
 }
 

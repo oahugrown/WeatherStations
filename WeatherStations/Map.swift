@@ -9,6 +9,10 @@
 import MapKit
 import Foundation
 
+protocol WSDelegate: class {
+    func ChangeData(_data: WSData)
+}
+
 enum StationType {case personal, airport }
 
 class Map {
@@ -16,6 +20,7 @@ class Map {
     var mapView: MKMapView!
     var weatherUnderground: WeatherUnderground!
     var stationType: StationType = StationType.personal
+    var wsData: WSData!
     
     var tappedPin: Pin = Pin()
     
@@ -24,6 +29,8 @@ class Map {
     let startLat: Double = 37.776289
     let regionRadius: CLLocationDistance = 150000
     
+    // Delegate to fire
+    weak var delegate: WSDelegate?
     
     // ----------------------------------------------------------
     // EXTERNAL
@@ -58,17 +65,20 @@ class Map {
         let coordinate = mapView.convert(_location,toCoordinateFrom: mapView)
         
         // Update weather data
+        // TO DO: Turn this into a bool check that data successfully update
         weatherUnderground.update(_latitude: coordinate.latitude, _longitude: coordinate.longitude)
         
-        // If data update failed, bail
-        if !Blackboard.data.validData {
-            return
-        }
+        wsData = weatherUnderground.wsData
         
         // Creates a new annotation where user tapped and updates data for it
         updateTappedPin(_coordinate: coordinate)
         
         refreshPins()
+        
+        // fire off the delegate
+        if delegate != nil {
+            delegate!.ChangeData(_data: wsData)
+        }
     }
     
     // Clears all annotations on the map, and redisplays all pins
@@ -85,6 +95,7 @@ class Map {
     }
     
     
+    
     // ----------------------------------------------------------
     // INTERNAL
     
@@ -92,10 +103,10 @@ class Map {
 
         // Setup tapped pin
         tappedPin.coordinate = _coordinate
-        tappedPin.title = Blackboard.data.getCityState(dict: weatherUnderground.tappedLocation!)
+        tappedPin.title = wsData.getCityState(dict: wsData.tappedLocation!)
         
         // Setup temp if temperature is valid
-        let temp = Blackboard.data.temperature
+        let temp = wsData.temperature
         if temp == nil {
             return
         }
@@ -109,17 +120,17 @@ class Map {
             var station = Array<Double>()
             
             if stationType == StationType.personal {
-                if index >= Blackboard.data.getPWStationCount() {
+                if index >= wsData.getPWStationCount() {
                     break
                 }
-                station = Blackboard.data.getNearbyPWSStationCoor(index: index)
+                station = wsData.getNearbyPWSStationCoor(index: index)
             }
                 
             else if stationType == StationType.airport {
-                if index >= Blackboard.data.getAPStationCount() {
+                if index >= wsData.getAPStationCount() {
                     break
                 }
-                station = Blackboard.data.getNearbyAPStationCoor(index: index)
+                station = wsData.getNearbyAPStationCoor(index: index)
             }
             
             let coordinate = CLLocationCoordinate2D(latitude: station[0], longitude: station[1])

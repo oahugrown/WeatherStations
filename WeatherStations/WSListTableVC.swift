@@ -15,16 +15,17 @@ struct Station{
     var type: String?
 }
 
-class WSListTableVC: UITableViewController {
+class WSListTableVC: UITableViewController, WSDelegate {
     let cellID: String = "WSListTableViewCell"
-
-    var stations = Array<Station>()
     
-    // calls multiple times in lifetime right before view shows for the user
+    var stations = Array<Station>()
+    var wsData: WSData = WSData()
+        
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        loadStations()
+        
+        LoadStations()
+        self.tableView.reloadData()
     }
     
     
@@ -60,34 +61,46 @@ class WSListTableVC: UITableViewController {
     }
     
     
-    private func loadStations() {
-        var apStationIndex: Int = 0
+    func ChangeData(_data: WSData) {
+        wsData = _data
+    }
+    
+    
+    private func LoadStations(){
         stations = []
         
+        // Bail if the data isn't valid
+        if !(wsData.isValid){
+            return
+        }
+        
+        var apStationIndex: Int = 0
+    
+        // update stations list
         for index in 0...50 {
             var station = Station()
-            station.temp = Blackboard.data.temperature
-            
+            station.temp = wsData.temperature
+    
             // For personal weather stations
-            if (index < (Blackboard.data.neighborPWStations?.count)!) {
-                station.cityState = Blackboard.data.getPWStationCityState(index: index)
-                station.type = "Personal"
+            if (index < (wsData.neighborPWStations?.count)!) {
+            station.cityState = wsData.getPWStationCityState(index: index)
+            station.type = "Personal"
             }
-                
-            // no more stations to add so break
-            else if (apStationIndex >= (Blackboard.data.neighborAPStations?.count)!) {
+    
+                // no more stations to add so break
+            else if (apStationIndex >= (wsData.neighborAPStations?.count)!) {
                 break
             }
-            
-            // For airport weather stations
+    
+                // For airport weather stations
             else {
-                station.cityState = Blackboard.data.getPWStationCityState(index: apStationIndex)
+                station.cityState = wsData.getPWStationCityState(index: apStationIndex)
                 apStationIndex += 1
                 station.type = "Airport"
             }
             stations.append(station)
         }
-        
+    
         // sort them alphabetically by City, State
         self.stations.sort {
             $0.cityState?.localizedCaseInsensitiveCompare($1.cityState!) == ComparisonResult.orderedAscending
